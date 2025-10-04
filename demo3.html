@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dr. Myriam Lahlou - Dentiste</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'teal': {
+                            50: '#f0fdfa',
+                            100: '#ccfbf1',
+                            500: '#14b8a6',
+                            600: '#0d9488',
+                            700: '#0f766e',
+                            900: '#134e4a',
+                        }
+                    },
+                    fontFamily: {
+                        'sans': ['Montserrat', 'sans-serif'],
+                        'serif': ['Playfair Display', 'serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .hero-gradient {
+            background: linear-gradient(135deg, #0f766e 0%, #0d9488 50%, #14b8a6 100%);
+        }
+        .service-card:hover {
+            transform: translateY(-5px);
+            transition: all 0.3s ease;
+        }
+        .gallery-item {
+            transition: all 0.3s ease;
+        }
+        .gallery-item:hover {
+            transform: scale(1.03);
+        }
+        .whatsapp-widget {
+            transition: all 0.3s ease;
+        }
+        .whatsapp-widget:hover {
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body class="font-sans text-gray-700">
+    <!-- WhatsApp Toggle Button -->
+<div class="fixed bottom-6 right-6 z-50">
+    <!-- Toggle Button (Always visible) -->
+    <button id="whatsapp-toggle" class="w-14 h-14 bg-green-500 rounded-full flex items-center justify-center shadow-2xl hover:bg-green-600 transition duration-300">
+        <i class="fab fa-whatsapp text-white text-2xl"></i>
+    </button>
+    
+    <!-- Chat Widget (Hidden by default) -->
+    <div id="whatsapp-widget" class="bg-white rounded-xl shadow-2xl max-w-xs overflow-hidden absolute bottom-16 right-0 transform transition-all duration-300 scale-0 opacity-0">
+        <div class="bg-green-500 p-4 text-white">
+            <div class="flex items-center">
+                <div class="w-10 h-10 bg-white rounded-full flex items-center justify-center mr-3">
+                    <i class="fab fa-whatsapp text-green-500 text-xl"></i>
+                </div>
+                <div>
+                    <h3 class="font-bold">Dr. Myriam Lahlou</h3>
+                    <p class="text-green-100 text-sm">En ligne • Répond rapidement</p>
+                </div>
+            </div>
+        </div>
+        <div class="p-4 bg-gray-50">
+            <p class="text-sm text-gray-600 mb-3">Bonjour ! 👋 Comment puis-je vous aider aujourd'hui ?</p>
+            <div class="space-y-2 mb-4 max-h-40 overflow-y-auto">
+                <div class="bg-white p-3 rounded-lg shadow-sm">
+                    <p class="text-sm">Je souhaite prendre rendez-vous</p>
+                </div>
+                <div class="bg-green-50 p-3 rounded-lg shadow-sm text-right">
+                    <p class="text-sm">Bien sûr ! Quelle date vous convient ?</p>
+                </div>
+            </div>
+            <a href="https://wa.me/212726112001?text=Bonjour%20Dr.%20Lahlou,%20je%20souhaiterais%20prendre%20rendez-vous." target="_blank" class="block w-full bg-green-500 hover:bg-green-600 text-white text-center py-3 rounded-lg font-medium transition duration-300">
+                <i class="fab fa-whatsapp mr-2"></i>Ouvrir WhatsApp
+            </a>
+        </div>
+    </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const toggleButton = document.getElementById('whatsapp-toggle');
+    const chatWidget = document.getElementById('whatsapp-widget');
+    let isWidgetOpen = false;
+
+    toggleButton.addEventListener('click', function() {
+        if (isWidgetOpen) {
+            // Close widget
+            chatWidget.style.transform = 'scale(0)';
+            chatWidget.style.opacity = '0';
+            setTimeout(() => {
+                chatWidget.style.display = 'none';
+            }, 300);
+        } else {
+            // Open widget
+            chatWidget.style.display = 'block';
+            setTimeout(() => {
+                chatWidget.style.transform = 'scale(1)';
+                chatWidget.style.opacity = '1';
+            }, 10);
+        }
+        isWidgetOpen = !isWidgetOpen;
+    });
+
+    // Close widget when clicking outside
+    document.addEventListener('click', function(event) {
+        if (isWidgetOpen && 
+            !chatWidget.contains(event.target) && 
+            !toggleButton.contains(event.target)) {
+            chatWidget.style.transform = 'scale(0)';
+            chatWidget.style.opacity = '0';
+            setTimeout(() => {
+                chatWidget.style.display = 'none';
+            }, 300);
+            isWidgetOpen = false;
+        }
+    });
+});
+</script>
+    <!-- Header -->
+    <header class="bg-white shadow-sm sticky top-0 z-40">
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <div class="flex items-center space-x-2">
+                <div class="w-10 h-10 bg-teal-500 rounded-full flex items-center justify-center">
+                    <i class="fas fa-tooth text-white"></i>
+                </div>
+                <div>
+                    <h1 class="text-xl font-bold text-teal-700">Dr. Myriam Lahlou</h1>
+                    <p class="text-xs text-gray-500">Chirurgien-Dentiste</p>
+                </div>
+            </div>
+            
+            <nav class="hidden md:flex space-x-8">
+                <a href="#accueil" class="text-teal-700 font-medium hover:text-teal-500">Accueil</a>
+                <a href="#services" class="text-gray-600 font-medium hover:text-teal-500">Services</a>
+                <a href="#gallery" class="text-gray-600 font-medium hover:text-teal-500">Galerie</a>
+                <a href="#apropos" class="text-gray-600 font-medium hover:text-teal-500">À Propos</a>
+                <a href="#contact" class="text-gray-600 font-medium hover:text-teal-500">Contact</a>
+            </nav>
+            
+            <div class="flex items-center space-x-4">
+                <a href="https://www.instagram.com/dr.myriam_lahlou/?hl=en" target="_blank" class="text-teal-700 hover:text-teal-500">
+                    <i class="fab fa-instagram text-xl"></i>
+                </a>
+                <a href="#contact" class="bg-teal-600 text-white px-4 py-2 rounded-lg hover:bg-teal-700 transition duration-300">
+                    Prendre RDV
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="accueil" class="hero-gradient text-white py-16 md:py-24">
+        <div class="container mx-auto px-4 flex flex-col md:flex-row items-center">
+            <div class="md:w-1/2 mb-10 md:mb-0">
+                <h1 class="text-4xl md:text-5xl font-bold mb-4 font-serif">Votre santé dentaire, notre priorité</h1>
+                <p class="text-xl mb-8 opacity-90">Le Dr. Myriam Lahlou vous accueille dans son cabinet pour des soins dentaires de qualité avec une approche personnalisée et bienveillante.</p>
+                <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
+                    <a href="#contact" class="bg-white text-teal-700 px-6 py-3 rounded-lg font-medium text-center hover:bg-gray-100 transition duration-300">
+                        Prendre rendez-vous
+                    </a>
+                    <a href="#services" class="border-2 border-white text-white px-6 py-3 rounded-lg font-medium text-center hover:bg-white hover:bg-opacity-10 transition duration-300">
+                        Nos services
+                    </a>
+                </div>
+            </div>
+            <div class="md:w-1/2 flex justify-center">
+                <div class="relative">
+                    <div class="w-64 h-64 md:w-80 md:h-80 bg-white rounded-full overflow-hidden shadow-2xl">
+                        <!-- Placeholder for profile picture -->
+                        <div class="w-full h-full bg-gradient-to-br from-teal-100 to-teal-300 flex items-center justify-center">
+                            <i class="fas fa-user-md text-teal-700 text-6xl"></i>
+                        </div>
+                    </div>
+                    <div class="absolute -bottom-4 -right-4 bg-white rounded-lg shadow-lg p-4">
+                        <div class="flex items-center space-x-2">
+                            <div class="w-3 h-3 bg-green-500 rounded-full animate-pulse"></div>
+                            <span class="text-teal-700 font-medium">Disponible aujourd'hui</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-16 bg-teal-50">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-teal-800 mb-4 font-serif">Nos Services Dentaires</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">Nous proposons une gamme complète de soins dentaires pour toute la famille, allant des soins préventifs aux traitements spécialisés.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Service 1 -->
+                <div class="bg-white rounded-xl shadow-md overflow-hidden service-card">
+                    <div class="h-48 bg-gradient-to-r from-teal-500 to-teal-600 flex items-center justify-center">
+                        <i class="fas fa-tooth text-white text-5xl"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-teal-800 mb-2">Soins Conservateurs</h3>
+                        <p class="text-gray-600 mb-4">Détartrage, traitement des caries, dévitalisation et obturations pour préserver votre santé dentaire.</p>
+                        <a href="#contact" class="text-teal-600 font-medium flex items-center">
+                            En savoir plus
+                            <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Service 2 -->
+                <div class="bg-white rounded-xl shadow-md overflow-hidden service-card">
+                    <div class="h-48 bg-gradient-to-r from-teal-500 to-teal-600 flex items-center justify-center">
+                        <i class="fas fa-teeth text-white text-5xl"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-teal-800 mb-2">Blanchiment Dentaire</h3>
+                        <p class="text-gray-600 mb-4">Un sourire éclatant grâce à nos techniques de blanchiment dentaire sûres et efficaces.</p>
+                        <a href="#contact" class="text-teal-600 font-medium flex items-center">
+                            En savoir plus
+                            <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Service 3 -->
+                <div class="bg-white rounded-xl shadow-md overflow-hidden service-card">
+                    <div class="h-48 bg-gradient-to-r from-teal-500 to-teal-600 flex items-center justify-center">
+                        <i class="fas fa-teeth-open text-white text-5xl"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-teal-800 mb-2">Orthodontie</h3>
+                        <p class="text-gray-600 mb-4">Correction de l'alignement dentaire pour enfants et adultes avec des solutions adaptées.</p>
+                        <a href="#contact" class="text-teal-600 font-medium flex items-center">
+                            En savoir plus
+                            <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-teal-800 mb-4 font-serif">Galerie du Cabinet</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">Découvrez notre cabinet moderne et nos équipements de pointe pour des soins dentaires dans les meilleures conditions.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Gallery Item 1 -->
+                <div class="rounded-xl overflow-hidden shadow-lg gallery-item">
+                    <div class="h-64 bg-gradient-to-br from-teal-100 to-teal-300 flex items-center justify-center">
+                        <i class="fas fa-tooth text-teal-600 text-5xl"></i>
+                    </div>
+                    <div class="p-4 bg-white">
+                        <h3 class="font-bold text-teal-800">Salle de soins</h3>
+                        <p class="text-gray-600 text-sm">Notre salle de soins équipée de technologies modernes</p>
+                    </div>
+                </div>
+                
+                <!-- Gallery Item 2 -->
+                <div class="rounded-xl overflow-hidden shadow-lg gallery-item">
+                    <div class="h-64 bg-gradient-to-br from-blue-100 to-blue-300 flex items-center justify-center">
+                        <i class="fas fa-x-ray text-blue-600 text-5xl"></i>
+                    </div>
+                    <div class="p-4 bg-white">
+                        <h3 class="font-bold text-teal-800">Équipement radiologique</h3>
+                        <p class="text-gray-600 text-sm">Appareils de radiologie dentaire de dernière génération</p>
+                    </div>
+                </div>
+                
+                <!-- Gallery Item 3 -->
+                <div class="rounded-xl overflow-hidden shadow-lg gallery-item">
+                    <div class="h-64 bg-gradient-to-br from-purple-100 to-purple-300 flex items-center justify-center">
+                        <i class="fas fa-couch text-purple-600 text-5xl"></i>
+                    </div>
+                    <div class="p-4 bg-white">
+                        <h3 class="font-bold text-teal-800">Salle d'attente</h3>
+                        <p class="text-gray-600 text-sm">Espace d'attente confortable et accueillant</p>
+                    </div>
+                </div>
+                
+                <!-- Gallery Item 4 -->
+                <div class="rounded-xl overflow-hidden shadow-lg gallery-item">
+                    <div class="h-64 bg-gradient-to-br from-amber-100 to-amber-300 flex items-center justify-center">
+                        <i class="fas fa-teeth text-amber-600 text-5xl"></i>
+                    </div>
+                    <div class="p-4 bg-white">
+                        <h3 class="font-bold text-teal-800">Blanchiment dentaire</h3>
+                        <p class="text-gray-600 text-sm">Résultats avant/après traitement de blanchiment</p>
+                    </div>
+                </div>
+                
+                <!-- Gallery Item 5 -->
+                <div class="rounded-xl overflow-hidden shadow-lg gallery-item">
+                    <div class="h-64 bg-gradient-to-br from-emerald-100 to-emerald-300 flex items-center justify-center">
+                        <i class="fas fa-smile text-emerald-600 text-5xl"></i>
+                    </div>
+                    <div class="p-4 bg-white">
+                        <h3 class="font-bold text-teal-800">Témoignages patients</h3>
+                        <p class="text-gray-600 text-sm">Sourires de nos patients satisfaits</p>
+                    </div>
+                </div>
+                
+                <!-- Gallery Item 6 -->
+                <div class="rounded-xl overflow-hidden shadow-lg gallery-item">
+                    <div class="h-64 bg-gradient-to-br from-rose-100 to-rose-300 flex items-center justify-center">
+                        <i class="fas fa-stethoscope text-rose-600 text-5xl"></i>
+                    </div>
+                    <div class="p-4 bg-white">
+                        <h3 class="font-bold text-teal-800">Équipement de diagnostic</h3>
+                        <p class="text-gray-600 text-sm">Instruments de diagnostic précis et modernes</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-10">
+                <a href="https://www.instagram.com/dr.myriam_lahlou/?hl=en" target="_blank" class="inline-flex items-center bg-gradient-to-r from-purple-500 to-pink-500 text-white px-6 py-3 rounded-lg font-medium hover:opacity-90 transition duration-300">
+                    <i class="fab fa-instagram mr-2"></i>
+                    Voir plus sur Instagram
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="apropos" class="py-16 bg-teal-50">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2 mb-10 md:mb-0">
+                    <div class="relative">
+                        <div class="w-full h-96 bg-gradient-to-br from-teal-100 to-teal-300 rounded-2xl shadow-lg"></div>
+                        <div class="absolute -bottom-6 -right-6 bg-white p-6 rounded-xl shadow-lg max-w-xs">
+                            <div class="flex items-center space-x-2 mb-2">
+                                <div class="w-2 h-2 bg-teal-500 rounded-full"></div>
+                                <h3 class="font-bold text-teal-800">Dr. Myriam Lahlou</h3>
+                            </div>
+                            <p class="text-sm text-gray-600">Chirurgien-Dentiste diplômée, spécialisée en dentisterie esthétique et soins conservateurs.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="md:w-1/2 md:pl-12">
+                    <h2 class="text-3xl font-bold text-teal-800 mb-6 font-serif">À Propos du Docteur</h2>
+                    <p class="text-gray-600 mb-4">Le Dr. Myriam Lahlou est une chirurgien-dentiste passionnée par son métier et soucieuse du bien-être de ses patients. Avec plusieurs années d'expérience, elle allie expertise technique et approche humaine pour des soins de qualité.</p>
+                    <p class="text-gray-600 mb-6">Son cabinet est équipé des dernières technologies pour garantir des soins efficaces et confortables. Elle suit régulièrement des formations pour rester à la pointe des innovations en dentisterie.</p>
+                    
+                    <div class="grid grid-cols-2 gap-4 mb-8">
+                        <div class="flex items-center">
+                            <i class="fas fa-graduation-cap text-teal-600 mr-3"></i>
+                            <span class="text-gray-700">Diplômée en chirurgie dentaire</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-award text-teal-600 mr-3"></i>
+                            <span class="text-gray-700">Formation continue</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-user-friends text-teal-600 mr-3"></i>
+                            <span class="text-gray-700">Approche personnalisée</span>
+                        </div>
+                        <div class="flex items-center">
+                            <i class="fas fa-teeth text-teal-600 mr-3"></i>
+                            <span class="text-gray-700">Matériaux de qualité</span>
+                        </div>
+                    </div>
+                    
+                    <a href="https://www.instagram.com/dr.myriam_lahlou/?hl=en" target="_blank" class="inline-flex items-center bg-gradient-to-r from-purple-500 to-pink-500 text-white px-5 py-3 rounded-lg font-medium hover:opacity-90 transition duration-300">
+                        <i class="fab fa-instagram mr-2"></i>
+                        Suivez-moi sur Instagram
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-16 bg-teal-900 text-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold mb-4 font-serif">Prendre Rendez-vous</h2>
+                <p class="max-w-2xl mx-auto opacity-80">N'hésitez pas à nous contacter pour toute question ou pour prendre rendez-vous. Notre équipe est à votre écoute.</p>
+            </div>
+            
+            <div class="flex flex-col lg:flex-row gap-10">
+                <div class="lg:w-1/2">
+                    <div class="bg-white text-gray-800 rounded-xl shadow-lg p-6 mb-6">
+                        <h3 class="text-xl font-bold text-teal-800 mb-4">Coordonnées</h3>
+                        
+                        <div class="space-y-4">
+                            <div class="flex items-start">
+                                <i class="fas fa-phone-alt text-teal-600 mt-1 mr-3"></i>
+                                <div>
+                                    <p class="font-medium">Téléphone</p>
+                                    <a href="tel:0522492440" class="text-gray-600 hover:text-teal-600">0522492440</a>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <i class="fab fa-whatsapp text-teal-600 mt-1 mr-3"></i>
+                                <div>
+                                    <p class="font-medium">WhatsApp</p>
+                                    <a href="https://wa.me/212726112001" class="text-gray-600 hover:text-teal-600" target="_blank">+212 726-112001</a>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <i class="fas fa-map-marker-alt text-teal-600 mt-1 mr-3"></i>
+                                <div>
+                                    <p class="font-medium">Adresse du cabinet</p>
+                                    <p class="text-gray-600">Cabinet du Dr. Myriam Lahlou</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <i class="fas fa-clock text-teal-600 mt-1 mr-3"></i>
+                                <div>
+                                    <p class="font-medium">Horaires d'ouverture</p>
+                                    <p class="text-gray-600">Lun - Ven: 9h00 - 18h00<br>Samedi: 9h00 - 13h00</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-gradient-to-r from-teal-700 to-teal-600 rounded-xl shadow-lg p-6">
+                        <h3 class="text-xl font-bold mb-4">Urgence dentaire</h3>
+                        <p class="mb-4">En cas d'urgence dentaire, contactez-nous directement par téléphone. Nous ferons de notre mieux pour vous recevoir dans les plus brefs délais.</p>
+                        <a href="tel:0522492440" class="inline-flex items-center bg-white text-teal-700 px-4 py-2 rounded-lg font-medium hover:bg-gray-100 transition duration-300">
+                            <i class="fas fa-phone mr-2"></i>
+                            Appeler maintenant
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="lg:w-1/2">
+                    <div class="bg-white text-gray-800 rounded-xl shadow-lg overflow-hidden">
+                        <div class="h-64 bg-gray-200">
+                            <!-- Google Maps iframe -->
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2531.6562923157953!2d-7.6198201999999995!3d33.5894658!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xda7d3063de30c63%3A0xd7786bb7df9b51ea!2sCabinet%20dr%20Myriam%20lahlou!5e1!3m2!1sen!2sma!4v1759067774805!5m2!1sen!2sma" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold text-teal-800 mb-2">Notre Localisation</h3>
+                            <p class="text-gray-600 mb-4">Notre cabinet est facilement accessible et dispose de places de parking à proximité.</p>
+                            <a href="https://goo.gl/maps/example" target="_blank" class="inline-flex items-center text-teal-600 font-medium">
+                                <i class="fas fa-directions mr-2"></i>
+                                Obtenir l'itinéraire
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-teal-950 text-white py-10">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-6 md:mb-0">
+                    <div class="flex items-center space-x-2 mb-4">
+                        <div class="w-8 h-8 bg-teal-500 rounded-full flex items-center justify-center">
+                            <i class="fas fa-tooth text-white"></i>
+                        </div>
+                        <h2 class="text-xl font-bold">Dr. Myriam Lahlou</h2>
+                    </div>
+                    <p class="text-teal-200 text-sm">Chirurgien-Dentiste - Soins dentaires de qualité</p>
+                </div>
+                
+                <div class="flex space-x-6">
+                    <a href="https://www.instagram.com/dr.myriam_lahlou/?hl=en" target="_blank" class="text-teal-200 hover:text-white transition duration-300">
+                        <i class="fab fa-instagram text-xl"></i>
+                    </a>
+                    <a href="tel:0522492440" class="text-teal-200 hover:text-white transition duration-300">
+                        <i class="fas fa-phone text-xl"></i>
+                    </a>
+                    <a href="https://wa.me/212726112001" target="_blank" class="text-teal-200 hover:text-white transition duration-300">
+                        <i class="fab fa-whatsapp text-xl"></i>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="border-t border-teal-800 mt-8 pt-8 text-center text-teal-300 text-sm">
+                <p>&copy; 2023 Dr. Myriam Lahlou - Tous droits réservés</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // WhatsApp widget toggle functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const whatsappWidget = document.getElementById('whatsapp-widget');
+            let isWidgetVisible = true;
+            
+            // Hide widget after 10 seconds
+            setTimeout(() => {
+                if (isWidgetVisible) {
+                    whatsappWidget.style.transform = 'scale(0.9)';
+                    whatsappWidget.style.opacity = '0';
+                    setTimeout(() => {
+                        whatsappWidget.style.display = 'none';
+                    }, 300);
+                    isWidgetVisible = false;
+                }
+            }, 10000);
+            
+            // Show widget when clicking on WhatsApp icon in footer
+            document.querySelector('footer a[href*="whatsapp"]').addEventListener('click', function(e) {
+                e.preventDefault();
+                whatsappWidget.style.display = 'block';
+                setTimeout(() => {
+                    whatsappWidget.style.transform = 'scale(1)';
+                    whatsappWidget.style.opacity = '1';
+                }, 10);
+                isWidgetVisible = true;
+                
+                // Hide again after 10 seconds
+                setTimeout(() => {
+                    if (isWidgetVisible) {
+                        whatsappWidget.style.transform = 'scale(0.9)';
+                        whatsappWidget.style.opacity = '0';
+                        setTimeout(() => {
+                            whatsappWidget.style.display = 'none';
+                        }, 300);
+                        isWidgetVisible = false;
+                    }
+                }, 10000);
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dr. Myriam Lahlou - Dental Practice</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'dental-blue': '#0ea5e9',
+                        'dental-teal': '#14b8a6',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .whatsapp-widget {
+            transition: all 0.3s ease;
+        }
+        .whatsapp-bot {
+            transform: translateY(100%);
+            transition: transform 0.3s ease;
+        }
+        .whatsapp-bot.active {
+            transform: translateY(0);
+        }
+        .gallery-item {
+            transition: transform 0.3s ease;
+        }
+        .gallery-item:hover {
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body class="font-sans bg-gray-50">
+    <!-- Header -->
+    <header class="bg-white shadow-sm">
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <div class="flex items-center space-x-4">
+                <div class="w-12 h-12 rounded-full bg-dental-teal flex items-center justify-center text-white">
+                    <i class="fas fa-tooth text-xl"></i>
+                </div>
+                <div>
+                    <h1 class="text-xl font-bold text-gray-800">Dr. Myriam Lahlou</h1>
+                    <p class="text-sm text-gray-600">Dental Surgeon</p>
+                </div>
+            </div>
+            <nav class="hidden md:flex space-x-8">
+                <a href="#home" class="text-dental-blue font-medium">Home</a>
+                <a href="#about" class="text-gray-600 hover:text-dental-blue">About</a>
+                <a href="#services" class="text-gray-600 hover:text-dental-blue">Services</a>
+                <a href="#gallery" class="text-gray-600 hover:text-dental-blue">Gallery</a>
+                <a href="#contact" class="text-gray-600 hover:text-dental-blue">Contact</a>
+            </nav>
+            <button class="md:hidden text-gray-600">
+                <i class="fas fa-bars text-xl"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="bg-gradient-to-r from-dental-blue to-dental-teal text-white py-16">
+        <div class="container mx-auto px-4 flex flex-col md:flex-row items-center">
+            <div class="md:w-1/2 mb-8 md:mb-0">
+                <h2 class="text-4xl font-bold mb-4">Your Smile Is Our Priority</h2>
+                <p class="text-xl mb-6">Professional dental care with a gentle touch. We're committed to providing the highest quality dental services in a comfortable environment.</p>
+                <div class="flex space-x-4">
+                    <a href="#contact" class="bg-white text-dental-blue px-6 py-3 rounded-lg font-semibold hover:bg-gray-100 transition">Book Appointment</a>
+                    <a href="#services" class="border-2 border-white text-white px-6 py-3 rounded-lg font-semibold hover:bg-white hover:text-dental-blue transition">Our Services</a>
+                </div>
+            </div>
+            <div class="md:w-1/2 flex justify-center">
+                <div class="relative">
+                    <div class="w-64 h-64 md:w-80 md:h-80 rounded-full bg-white/20 flex items-center justify-center">
+                        <div class="w-60 h-60 md:w-72 md:h-72 rounded-full bg-white/30 flex items-center justify-center">
+                            <div class="w-56 h-56 md:w-64 md:h-64 rounded-full bg-white overflow-hidden">
+                                <!-- Profile picture placeholder -->
+                                <div class="w-full h-full bg-gray-200 flex items-center justify-center">
+                                    <i class="fas fa-user-md text-dental-blue text-6xl"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12 text-gray-800">About Dr. Myriam Lahlou</h2>
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/3 mb-8 md:mb-0 flex justify-center">
+                    <div class="w-64 h-64 rounded-full overflow-hidden border-4 border-dental-teal">
+                        <!-- Profile picture placeholder -->
+                        <div class="w-full h-full bg-gray-200 flex items-center justify-center">
+                            <i class="fas fa-user-md text-dental-blue text-5xl"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="md:w-2/3 md:pl-12">
+                    <h3 class="text-2xl font-semibold mb-4 text-gray-800">Dr. Myriam Lahlou</h3>
+                    <p class="text-gray-600 mb-4">With years of experience in dental surgery, Dr. Myriam Lahlou is dedicated to providing exceptional dental care to all her patients. Her gentle approach and attention to detail ensure that every visit is comfortable and productive.</p>
+                    <p class="text-gray-600 mb-6">Dr. Lahlou stays current with the latest advancements in dentistry to offer the most effective treatments available. Her practice combines state-of-the-art technology with a warm, welcoming atmosphere.</p>
+                    <div class="flex items-center space-x-4">
+                        <a href="https://www.instagram.com/dr.myriam_lahlou/?hl=en" target="_blank" class="text-pink-500 hover:text-pink-600">
+                            <i class="fab fa-instagram text-2xl"></i>
+                        </a>
+                        <span class="text-gray-600">Follow on Instagram</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12 text-gray-800">Our Dental Services</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Service 1 -->
+                <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                    <div class="h-48 bg-dental-blue flex items-center justify-center">
+                        <i class="fas fa-tooth text-white text-6xl"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-3 text-gray-800">General Dentistry</h3>
+                        <p class="text-gray-600 mb-4">Comprehensive dental exams, cleanings, fillings, and preventive care to maintain your oral health.</p>
+                        <a href="#contact" class="text-dental-blue font-semibold hover:underline">Learn More</a>
+                    </div>
+                </div>
+                <!-- Service 2 -->
+                <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                    <div class="h-48 bg-dental-teal flex items-center justify-center">
+                        <i class="fas fa-teeth text-white text-6xl"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-3 text-gray-800">Cosmetic Dentistry</h3>
+                        <p class="text-gray-600 mb-4">Teeth whitening, veneers, and other cosmetic procedures to enhance your smile.</p>
+                        <a href="#contact" class="text-dental-blue font-semibold hover:underline">Learn More</a>
+                    </div>
+                </div>
+                <!-- Service 3 -->
+                <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                    <div class="h-48 bg-dental-blue flex items-center justify-center">
+                        <i class="fas fa-implant text-white text-6xl"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-3 text-gray-800">Dental Implants</h3>
+                        <p class="text-gray-600 mb-4">Permanent solutions for missing teeth that look, feel, and function like natural teeth.</p>
+                        <a href="#contact" class="text-dental-blue font-semibold hover:underline">Learn More</a>
+                    </div>
+                </div>
+                <!-- Service 4 -->
+                <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                    <div class="h-48 bg-dental-teal flex items-center justify-center">
+                        <i class="fas fa-tooth text-white text-6xl"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-3 text-gray-800">Orthodontics</h3>
+                        <p class="text-gray-600 mb-4">Braces and aligners to correct misaligned teeth and improve your bite.</p>
+                        <a href="#contact" class="text-dental-blue font-semibold hover:underline">Learn More</a>
+                    </div>
+                </div>
+                <!-- Service 5 -->
+                <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                    <div class="h-48 bg-dental-blue flex items-center justify-center">
+                        <i class="fas fa-teeth-open text-white text-6xl"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-3 text-gray-800">Root Canal Therapy</h3>
+                        <p class="text-gray-600 mb-4">Painless treatment to save infected teeth and relieve discomfort.</p>
+                        <a href="#contact" class="text-dental-blue font-semibold hover:underline">Learn More</a>
+                    </div>
+                </div>
+                <!-- Service 6 -->
+                <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                    <div class="h-48 bg-dental-teal flex items-center justify-center">
+                        <i class="fas fa-smile text-white text-6xl"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-semibold mb-3 text-gray-800">Pediatric Dentistry</h3>
+                        <p class="text-gray-600 mb-4">Gentle dental care tailored specifically for children and adolescents.</p>
+                        <a href="#contact" class="text-dental-blue font-semibold hover:underline">Learn More</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12 text-gray-800">Our Clinic Gallery</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Image 1 -->
+                <div class="gallery-item rounded-lg overflow-hidden shadow-md">
+                    <div class="h-64 bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80')"></div>
+                </div>
+                <!-- Image 2 -->
+                <div class="gallery-item rounded-lg overflow-hidden shadow-md">
+                    <div class="h-64 bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1629909613654-28e377c37b09?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80')"></div>
+                </div>
+                <!-- Image 3 -->
+                <div class="gallery-item rounded-lg overflow-hidden shadow-md">
+                    <div class="h-64 bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1606811841689-23dfddce3e95?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80')"></div>
+                </div>
+                <!-- Image 4 -->
+                <div class="gallery-item rounded-lg overflow-hidden shadow-md">
+                    <div class="h-64 bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1559757148-5c350d0d3c56?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80')"></div>
+                </div>
+                <!-- Image 5 -->
+                <div class="gallery-item rounded-lg overflow-hidden shadow-md">
+                    <div class="h-64 bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1609840114035-3c981d6ad0e1?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80')"></div>
+                </div>
+                <!-- Image 6 -->
+                <div class="gallery-item rounded-lg overflow-hidden shadow-md">
+                    <div class="h-64 bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1588776814546-1ffcf47267a5?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80')"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12 text-gray-800">Contact Us</h2>
+            <div class="flex flex-col lg:flex-row">
+                <div class="lg:w-1/2 mb-8 lg:mb-0 lg:pr-8">
+                    <div class="bg-white rounded-lg shadow-md p-6 mb-6">
+                        <h3 class="text-xl font-semibold mb-4 text-gray-800">Contact Information</h3>
+                        <div class="space-y-4">
+                            <div class="flex items-center">
+                                <i class="fas fa-phone text-dental-blue mr-3"></i>
+                                <span class="text-gray-700">0522492440</span>
+                            </div>
+                            <div class="flex items-center">
+                                <i class="fab fa-whatsapp text-green-500 mr-3"></i>
+                                <span class="text-gray-700">+212 726-112001</span>
+                            </div>
+                            <div class="flex items-center">
+                                <i class="fas fa-map-marker-alt text-dental-blue mr-3"></i>
+                                <span class="text-gray-700">Cabinet dr Myriam lahlou</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                        <!-- Map -->
+                        <div class="h-64">
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2531.6562923157953!2d-7.6198201999999995!3d33.5894658!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xda7d3063de30c63%3A0xd7786bb7df9b51ea!2sCabinet%20dr%20Myriam%20lahlou!5e1!3m2!1sen!2sma!4v1759067774805!5m2!1sen!2sma" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                        </div>
+                    </div>
+                </div>
+                <div class="lg:w-1/2">
+                    <div class="bg-white rounded-lg shadow-md p-6">
+                        <h3 class="text-xl font-semibold mb-4 text-gray-800">Book an Appointment</h3>
+                        <form class="space-y-4">
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div>
+                                    <label class="block text-gray-700 mb-2" for="name">Full Name</label>
+                                    <input type="text" id="name" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-dental-blue">
+                                </div>
+                                <div>
+                                    <label class="block text-gray-700 mb-2" for="phone">Phone Number</label>
+                                    <input type="tel" id="phone" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-dental-blue">
+                                </div>
+                            </div>
+                            <div>
+                                <label class="block text-gray-700 mb-2" for="email">Email Address</label>
+                                <input type="email" id="email" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-dental-blue">
+                            </div>
+                            <div>
+                                <label class="block text-gray-700 mb-2" for="service">Service Interested In</label>
+                                <select id="service" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-dental-blue">
+                                    <option value="">Select a service</option>
+                                    <option value="general">General Dentistry</option>
+                                    <option value="cosmetic">Cosmetic Dentistry</option>
+                                    <option value="implants">Dental Implants</option>
+                                    <option value="orthodontics">Orthodontics</option>
+                                    <option value="root-canal">Root Canal Therapy</option>
+                                    <option value="pediatric">Pediatric Dentistry</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="block text-gray-700 mb-2" for="message">Message</label>
+                                <textarea id="message" rows="4" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-dental-blue"></textarea>
+                            </div>
+                            <button type="submit" class="w-full bg-dental-blue text-white py-3 rounded-lg font-semibold hover:bg-blue-600 transition">Book Appointment</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-8">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-4 md:mb-0">
+                    <h3 class="text-xl font-bold">Dr. Myriam Lahlou</h3>
+                    <p class="text-gray-400">Dental Surgeon</p>
+                </div>
+                <div class="flex space-x-4">
+                    <a href="https://www.instagram.com/dr.myriam_lahlou/?hl=en" target="_blank" class="text-gray-400 hover:text-white">
+                        <i class="fab fa-instagram text-xl"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 mt-6 pt-6 text-center text-gray-400">
+                <p>&copy; 2023 Dr. Myriam Lahlou Dental Practice. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- WhatsApp Widget -->
+    <div class="fixed bottom-6 right-6 z-50">
+        <!-- WhatsApp Bot -->
+        <div id="whatsappBot" class="whatsapp-bot bg-white rounded-lg shadow-xl w-80 mb-4">
+            <div class="bg-green-500 text-white p-4 rounded-t-lg flex justify-between items-center">
+                <div class="flex items-center">
+                    <div class="w-10 h-10 rounded-full bg-white flex items-center justify-center mr-3">
+                        <i class="fab fa-whatsapp text-green-500 text-xl"></i>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold">Dr. Myriam Lahlou</h4>
+                        <p class="text-sm">Typically replies within an hour</p>
+                    </div>
+                </div>
+                <button id="closeBot" class="text-white">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="p-4 h-64 overflow-y-auto">
+                <div class="mb-4">
+                    <div class="bg-gray-100 rounded-lg p-3 max-w-xs">
+                        <p class="text-gray-700">Hello! How can I help you today?</p>
+                    </div>
+                </div>
+                <div class="space-y-4">
+                    <button class="quick-msg w-full text-left bg-gray-100 hover:bg-gray-200 rounded-lg p-3 text-gray-700 transition">
+                        I'd like to book an appointment
+                    </button>
+                    <button class="quick-msg w-full text-left bg-gray-100 hover:bg-gray-200 rounded-lg p-3 text-gray-700 transition">
+                        What are your opening hours?
+                    </button>
+                    <button class="quick-msg w-full text-left bg-gray-100 hover:bg-gray-200 rounded-lg p-3 text-gray-700 transition">
+                        Do you accept insurance?
+                    </button>
+                    <button class="quick-msg w-full text-left bg-gray-100 hover:bg-gray-200 rounded-lg p-3 text-gray-700 transition">
+                        I have a dental emergency
+                    </button>
+                </div>
+            </div>
+            <div class="p-4 border-t border-gray-200">
+                <div class="flex">
+                    <input type="text" placeholder="Type a message" class="flex-grow border border-gray-300 rounded-l-lg px-4 py-2 focus:outline-none focus:ring-1 focus:ring-green-500">
+                    <button class="bg-green-500 text-white px-4 rounded-r-lg hover:bg-green-600 transition">
+                        <i class="fas fa-paper-plane"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- WhatsApp Button -->
+        <button id="whatsappButton" class="whatsapp-widget bg-green-500 text-white w-14 h-14 rounded-full flex items-center justify-center shadow-lg hover:bg-green-600 transition">
+            <i class="fab fa-whatsapp text-2xl"></i>
+        </button>
+    </div>
+
+    <script>
+        // WhatsApp Widget Functionality
+        const whatsappButton = document.getElementById('whatsappButton');
+        const whatsappBot = document.getElementById('whatsappBot');
+        const closeBot = document.getElementById('closeBot');
+        const quickMsgButtons = document.querySelectorAll('.quick-msg');
+
+        whatsappButton.addEventListener('click', () => {
+            whatsappBot.classList.toggle('active');
+        });
+
+        closeBot.addEventListener('click', () => {
+            whatsappBot.classList.remove('active');
+        });
+
+        quickMsgButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const message = button.textContent.trim();
+                const phoneNumber = "+212726112001"; // Using the provided WhatsApp number
+                const encodedMessage = encodeURIComponent(message);
+                const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
+                window.open(whatsappUrl, '_blank');
+            });
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
